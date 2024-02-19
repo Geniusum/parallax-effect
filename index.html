@@ -1,0 +1,146 @@
+<!--
+From Genius_um. Under the name of MazeGroup (https://mazegroup.org/)
+2024
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Effect</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .parallax-background_ {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://picsum.photos/id/38/3840/2160');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .parallax, .two_ {
+            height: 50vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .parallax-background {
+            background-image: url('https://picsum.photos/id/46/3840/2160');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            backdrop-filter: blur(10px);
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            transform: translateZ(0);
+            z-index: -1;
+        }
+
+        .two{
+            background-image: url('https://picsum.photos/id/37/3840/2160');
+        }
+
+        .parallax-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        #title, #title_{
+            font-size: 14vw;
+            font-weight: bolder;
+            user-select: none;
+            cursor: default;
+            text-shadow: 0px 4px 16px rgba(0, 0, 0, 0.178);
+            filter: blur(6px);
+            transition: filter 1s;
+        }
+
+        #title_{
+            font-weight: lighter;
+            font-size: 12vw;
+        }
+
+        .parallax:hover #title{
+            filter: blur(3px);
+        }
+
+        .parallax:hover #title_{
+            filter: blur(6px);
+        }
+
+        .two_:hover #title_{
+            filter: blur(3px);
+        }
+
+        .parallax:hover #title:hover, .two_:hover #title_:hover{
+            filter: blur(0);
+        }
+    </style>
+</head>
+
+<body>
+    <section onmousemove="parallax(event)">
+        <div class="parallax-background_"></div>
+        <section class="parallax">
+            <div class="parallax-background"></div>
+            <div class="parallax-content">
+                <h1 id="title">PRIMARY</h1>
+            </div>
+        </section>
+        <section class="two_">
+            <div class="parallax-background two"></div>
+            <div class="parallax-content">
+                <h1 id="title_">SECONDARY</h1>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        function parallax(e) {
+            let parallaxBackground = document.querySelector('.parallax-background');
+            let offsetX = (window.innerWidth / 2 - e.pageX) / 20;
+            let offsetY = (window.innerHeight / 2 - e.pageY) / 20;
+            parallaxBackground.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            let title = document.querySelector('#title');
+            let title_offsetX = (window.innerWidth / 2 - e.pageX) / 16;
+            let title_offsetY = (window.innerHeight / 2 - e.pageY) / 16;
+            let title_offsetX_ = (window.innerWidth / 2 - e.pageX) / 56;
+            let title_offsetY_ = (window.innerHeight / 2 - e.pageY) / 56;
+            title.style.transform = `translate(${title_offsetX}px, ${title_offsetY}px)`;
+            title.style.textShadow = `${title_offsetX_}px ${title_offsetY_}px 16px rgba(0, 0, 0, 0.178)`;
+            let parallaxBackground_ = document.querySelector('.two');
+            let offsetX_ = (window.innerWidth / 2 - e.pageX) / 20;
+            let offsetY_ = (window.innerHeight / 2 - e.pageY) / 20;
+            parallaxBackground_.style.transform = `translate(${offsetX_}px, ${offsetY_}px)`;
+            let title_ = document.querySelector('#title_');
+            let title_offsetX__ = (window.innerWidth / 2 - e.pageX) / 16;
+            let title_offsetY__ = (window.innerHeight / 2 - e.pageY) / 16;
+            let title_offsetX___ = (window.innerWidth / 2 - e.pageX) / 56;
+            let title_offsetY___ = (window.innerHeight / 2 - e.pageY) / 56 + 15;
+            title_.style.transform = `translate(${title_offsetX__}px, ${title_offsetY__}px)`;
+            title_.style.textShadow = `${title_offsetX___}px ${title_offsetY___}px 16px rgba(0, 0, 0, 0.178)`;
+        }
+    </script>
+</body>
+
+</html>
